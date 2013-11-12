@@ -1,64 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Chamara Paul | DATASCIENCE | Algorithms</title>
+<head>
+  <meta charset="utf-8" />
+  <title>Chamara Paul | DATASCIENCE | Algorithms</title>
+  <meta name="viewport" content="width=450, maximum-scale=1"/>
+  <link rel="shortcut icon" href="img/favicon">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/css-tooltips.css" />
+  <link rel="stylesheet" href="css/animate.css" />
+  <link rel="stylesheet" href="social/style.css" />
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id="header_wrap" class="outer">
+    <header class="inner">
+      <h1 id="project_title">Algorithms</h1>
+    </header>
+  </div>
+  <div id="main_content_wrap" class="outer">
+    <section id="main_content" class="inner">
+      <h3>Acedemic Experience</h3>
+        <p>As a computer science student, I received a formal introduction to Algorithms in CPSC 420 at Christopher Newport University. It is in this course that I developed the skills to mathematically analyze common problem structures and recognize the algorithms which solve them. This course was largely theoretical, and I was graded on my ability to understand growth order, sorting algorithms, dynamic programming, recursion trees and graphs. </p>
+        <p><strong>Work Sample</strong>: <a href="algorithms_cpaul.docx">Analysis of Sorting Algorithms</a> + <a href="algorithms_cpaul.pl">perl script</a></p>
+        </br>
 
-	<!-- SEO -->
-    <meta name="viewport" content="width=450, maximum-scale=1"/>
+        <h3>Professional Experience</h3>
+        <p>More recently, I've needed to solve a variation of the <a href="https://en.wikipedia.org/wiki/Knapsack_problem" target="blank">knapsack problem</a> with my work for Hearst Digital's newspaper platform. This was not explicitedly presented as an NP-complete problem, but rather a solution was needed for eloquently choosing a template based on the number of stories in a newspaper section. I was able to recognize the complexitly of the problem at hand, a provide a simple solution, as seen below:
 
-	<!-- Favicon -->
-
-    <link rel="shortcut icon" href="img/favicon">
-
-	<!-- CSS -->
-
-    <link rel="stylesheet" href="css/style.css" />
-	<link rel="stylesheet" href="css/css-tooltips.css" />
-	<link rel="stylesheet" href="css/animate.css" />
-	<link rel="stylesheet" href="social/style.css" />
-	
-	
-	<!-- Fonts -->
-	
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700' rel='stylesheet' type='text/css'>
-
-  </head>
-  
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <h1 id="project_title">Algorithms</h1>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
+        <pre><code>
+- (void)iterateOver:(NSArray *)templateTypes toCreate:(NSMutableArray *)templateArray withTotal:(int)total andStoryCount:(int)storyCount {
+    for(NSNumber *n in templateTypes) {
+        total += [n intValue];
+        if(total == storyCount) {
+            [templateArray addObject:n];
+            NSSortDescriptor *lowestToHighest = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+            [templateArray sortUsingDescriptors:[NSArray arrayWithObject:lowestToHighest]];
+            [_templateOptions addObject:templateArray];
+        }
+        if(total < storyCount) {
+            [templateArray addObject:n];
+            NSMutableArray *templateArrayCopy = [[[NSMutableArray alloc] initWithArray:templateArray copyItems:YES] autorelease];
+            [self iterateOver:templateTypes toCreate:templateArrayCopy withTotal:total andStoryCount:storyCount];
+        }
+    }
+}
+        </code></pre>
       </section>
     </div>
-
-    <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-      <p id="networks"><a class="name" href="index.html">CHAMARA PAUL</a></p>
-      <p id="networks"><a class="small" href="datastructures.html">Data Strutures</a> | <a class="small" href="algorithms.html">Algorithms</a> | <a class="small" href="linearalgebra.html">Linear Algebra</a></p>
+        <p id="networks">DATASCIENCE@BERKELEY</p>
+        <p id="networks"><a class="name" href="index.html">Chamara Paul</a></p>
+        <p id="networks"><a class="small" href="datastructures.html">Data Structures</a> | <a class="small" href="algorithms.html">Algorithms</a> | <a class="small" href="linearalgebra.html">Linear Algebra</a></p>
       </footer>
     </div>
-
   </body>
-</html>
+  </html>
