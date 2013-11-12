@@ -172,27 +172,8 @@ line-height: 30px;
 }
 
 /*------------------------------------*\
-  Footer
-\*------------------------------------*/
-
-#footer {
-  font-size: 14px;
-  color: #4783e6;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  margin: 40px 0 0;
-}
-
-#footer footer a {
-  color: white;
-}
-
-#footer footer a:hover {
-  color: white;
-}
-
-/*******************************************************************************
 Full-Width Styles
-*******************************************************************************/
+\*------------------------------------*/
 
 .outer {
   width: 100%;
@@ -231,6 +212,25 @@ pre {
 code { 
   font-family: Courier, 'New Courier', monospace; 
   font-size: 12px;
+}
+
+/*------------------------------------*\
+  Footer
+\*------------------------------------*/
+
+#footer {
+  font-size: 14px;
+  color: #4783e6;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  margin: 40px 0 0;
+}
+
+#footer footer a {
+  color: white;
+}
+
+#footer footer a:hover {
+  color: white;
 }
 
 /*------------------------------------*\
